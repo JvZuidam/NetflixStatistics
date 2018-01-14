@@ -6,6 +6,7 @@ public class Main {
         GraphicalUserInterface ui = new GraphicalUserInterface();
         SwingUtilities.invokeLater(ui);
         DbConnection conn = new DbConnection();
+        conn.Connect();
 
 
     }
