@@ -1,0 +1,106 @@
+use NetflixStatistixs
+
+--Account (AccountId, AccountName, Street, Zipcode, Adress, City):
+INSERT INTO Account VALUES (1215426, 'Fam. van Raalte', 'Schopenhauerdijkje', '3991ML', '5', 'Houten');
+INSERT INTO Account VALUES (5602533, 'J. van Betlehem', 'Nietzschestraat', '8542BE', '99', 'Breda');
+INSERT INTO Account VALUES (5285824, 'F. de Kat', 'Kantlaan', '8542CD', '11', 'Breda');
+--Profile (ProfileId, ProfileName, Age, AccountId):
+INSERT INTO Profile VALUES (1, 'Frank', 49, 1215426);
+INSERT INTO Profile VALUES (2, 'Madelief', 16, 1215426);
+INSERT INTO Profile VALUES (3, 'Petrus', 18, 5602533);
+INSERT INTO Profile VALUES (4, 'Paulus', 18, 5602533);
+INSERT INTO Profile VALUES (5, 'Fritz', 49, 5285824);
+INSERT INTO Profile VALUES (6, 'Diana', 29, 5285824);
+--Movie (MovieId, MovieTitle, Genre, Language, Rating, Playtime):
+INSERT INTO Movie VALUES (1010, 'The Abominable Bride', 'Detective', 'English', '12+', '1:29');
+INSERT INTO Movie VALUES (8001, 'The Life of Brian', 'Humour', 'English', '12+', '1:34');
+INSERT INTO Movie VALUES (8002, 'Pulp Fiction', 'Crime', 'English-Simplified', '16+', '2:34');
+INSERT INTO Movie VALUES (8004, 'Pruimebloesem', 'Erotic', 'Dutch', '18+', '1:20');
+INSERT INTO Movie VALUES (8008, 'Reservoir Dogs', 'Crime', 'English-Simplified', '16+', '1:39');
+INSERT INTO Movie VALUES (8010, 'The Good, the Bad and the Ugly', 'Western', 'English-Simplified', '12+', '2:41');
+INSERT INTO Movie VALUES (8011, 'Andy Warhols Dracula', 'Humour', 'English-Simplified', '16+', '1:43');
+INSERT INTO Movie VALUES (8012, 'Ober', 'Humour', 'Dutch', '6+', '1:37');
+INSERT INTO Movie VALUES (8014, 'Der Untergang', 'War', 'German', '6+', '2:58');
+INSERT INTO Movie VALUES (8016, 'De helaasheid der dingen', 'Humour', 'Flemish', '12+', '1:48');
+INSERT INTO Movie VALUES (8017, 'A Clockwork Orange', 'SF', 'English', '16+', '2:16');
+--Series (SeriesId, SeriesTitle, Genre, Language, Rating):
+INSERT INTO Series VALUES (1, 'Sherlock', 'Detective', 'English', '12+');
+INSERT INTO Series VALUES (2, 'Breaking Bad', 'Drama', 'English-Simplified', '16+');
+INSERT INTO Series VALUES (3, 'Fargo', 'Drama', 'English-Simplified', '16+');
+--Episodes (EpisodeId, Follownumber, SeriesId, EpisodeTitle, Playtime):
+INSERT INTO Episode VALUES (1001, 'S01E01', 1,'A Study in Pink', '1:28');
+INSERT INTO Episode VALUES (1002, 'S01E02', 1,'The Blind Banker', '1:28');
+INSERT INTO Episode VALUES (1003, 'S01E03', 1,'The Great Game', '1:28');
+INSERT INTO Episode VALUES (1004, 'S02E01', 1,'A Scandal in Belgravia', '1:28');
+INSERT INTO Episode VALUES (1005, 'S02E02', 1,'The Hounds of Baskerville', '1:28');
+INSERT INTO Episode VALUES (1006, 'S02E03', 1,'The Reichenback Fall', '1:28');
+INSERT INTO Episode VALUES (1007, 'S03E01', 1,'The Empty Hearse', '1:28');
+INSERT INTO Episode VALUES (1008, 'S03E02', 1,'The Sign of Three', '1:28');
+INSERT INTO Episode VALUES (1009, 'S03E03', 1,'His Last Vow', '1:28');
+INSERT INTO Episode VALUES (2000, 'S01E01', 2,'Pilot', '0:58');
+INSERT INTO Episode VALUES (2001, 'S01E02', 2,'Cats in the Bag...', '0:48');
+INSERT INTO Episode VALUES (2002, 'S01E03', 2,'...And the bags in the River', '0:48');
+INSERT INTO Episode VALUES (2003, 'S01E04', 2,'Cancer Man', '0:48');
+INSERT INTO Episode VALUES (2004, 'S01E05', 2,'Gray Matter', '0:48');
+INSERT INTO Episode VALUES (2005, 'S01E06', 2,'Crazy Handful of Nothin', '0:48');
+INSERT INTO Episode VALUES (2006, 'S01E07', 2,'A No-Rough-Stuff-Type Deal', '0:48');
+INSERT INTO Episode VALUES (2007, 'S02E01', 2,'Seven Thirty-Seven', '0:48');
+INSERT INTO Episode VALUES (2008, 'S02E02', 2,'Grilled', '0:48');
+INSERT INTO Episode VALUES (2009, 'S02E03', 2,'Bit by a Dead Bee', '0:48');
+INSERT INTO Episode VALUES (2010, 'S02E04', 2,'Down', '0:48');
+INSERT INTO Episode VALUES (2011, 'S02E05', 2,'Breakage', '0:48');
+INSERT INTO Episode VALUES (2012, 'S02E06', 2,'Peekaboo', '0:48');
+INSERT INTO Episode VALUES (2013, 'S02E07', 2,'Negro Y Azul', '0:48');
+INSERT INTO Episode VALUES (2014, 'S02E08', 2,'Better Call Saul', '0:48');
+INSERT INTO Episode VALUES (2015, 'S02E09', 2,'4 Days Out', '0:48');
+INSERT INTO Episode VALUES (2016, 'S02E10', 2,'Over', '0:48');
+INSERT INTO Episode VALUES (2017, 'S02E11', 2,'Mandala', '0:48');
+INSERT INTO Episode VALUES (2018, 'S02E12', 2,'Phoenix', '0:48');
+INSERT INTO Episode VALUES (2019, 'S02E13', 2,'ABQ', '0:48');
+INSERT INTO Episode VALUES (3001, 'S01E01', 3,'The Crocodiles Dilemma', '1:08');
+INSERT INTO Episode VALUES (3002, 'S01E02', 3,'The Rooster Prince', '1:08');
+INSERT INTO Episode VALUES (3003, 'S01E03', 3,'A Muddy Road', '1:08');
+INSERT INTO Episode VALUES (3004, 'S01E04', 3,'Eating the Blame', '1:08');
+INSERT INTO Episode VALUES (3005, 'S01E05', 3,'The Six Ungraspables', '1:08');
+INSERT INTO Episode VALUES (3006, 'S01E06', 3,'Buridans Ass', '1:08');
+INSERT INTO Episode VALUES (3007, 'S01E07', 3,'Who shaves the Barber?', '1:08');
+INSERT INTO Episode VALUES (3008, 'S01E08', 3,'The Heap', '1:08');
+INSERT INTO Episode VALUES (3009, 'S01E09', 3,'A For, a Rabbit, and a Cabbage', '1:08');
+INSERT INTO Episode VALUES (3010, 'S01E10', 3,'Mortons Fork', '1:08');
+INSERT INTO Episode VALUES (3101, 'S02E01', 3,'Waiting for Dutch', '1:08');
+INSERT INTO Episode VALUES (3102, 'S02E02', 3,'Before the Law', '1:08');
+INSERT INTO Episode VALUES (3103, 'S02E03', 3,'The Myth of Sisyphus', '1:08');
+INSERT INTO Episode VALUES (3104, 'S02E04', 3,'The Gift of the Magi', '1:08');
+INSERT INTO Episode VALUES (3105, 'S02E05', 3,'Fear and Trembling', '1:08');
+INSERT INTO Episode VALUES (3106, 'S02E06', 3,'Rhiniceros', '1:08');
+INSERT INTO Episode VALUES (3107, 'S02E07', 3,'Did you do this? No, you did it!', '1:08');
+INSERT INTO Episode VALUES (3108, 'S02E08', 3,'Loplop', '1:08');
+INSERT INTO Episode VALUES (3109, 'S02E09', 3,'The Castle', '1:08');
+INSERT INTO Episode VALUES (3110, 'S02E10', 3,'Palindrome', '1:08');
+--WatchedMovies (WatchedId, ProfileId, MovieId, Percentage):
+INSERT INTO WatchedMovies VALUES (1, 3, 8001, 100);
+INSERT INTO WatchedMovies VALUES (2, 3, 8002, 99);
+INSERT INTO WatchedMovies VALUES (3, 4, 8001, 100);
+INSERT INTO WatchedMovies VALUES (4, 5, 1010, 5);
+INSERT INTO WatchedMovies VALUES (5, 6, 8002, 100);
+--WatchedSeries (WatchedId, ProfileId, EpisodeId, Percentage):
+INSERT INTO WatchedSeries VALUES (1, 1, 1001, 100);
+INSERT INTO WatchedSeries VALUES (2, 1, 1002, 100);
+INSERT INTO WatchedSeries VALUES (3, 1, 1003, 78);
+INSERT INTO WatchedSeries VALUES (4, 2, 1001, 100);
+INSERT INTO WatchedSeries VALUES (5, 2, 1002, 60);
+INSERT INTO WatchedSeries VALUES (6, 2, 3001, 91);
+INSERT INTO WatchedSeries VALUES (7, 2, 2001, 100);
+INSERT INTO WatchedSeries VALUES (8, 2, 2002, 100);
+INSERT INTO WatchedSeries VALUES (9, 2, 2003, 100);
+INSERT INTO WatchedSeries VALUES (10, 2, 2004, 22);
+INSERT INTO WatchedSeries VALUES (11, 3, 3001, 100);
+INSERT INTO WatchedSeries VALUES (12, 3, 3002, 100);
+INSERT INTO WatchedSeries VALUES (13, 3, 3010, 60);
+INSERT INTO WatchedSeries VALUES (14, 4, 3001, 100);
+INSERT INTO WatchedSeries VALUES (15, 4, 3002, 74);
+INSERT INTO WatchedSeries VALUES (16, 4, 3010, 60);
+INSERT INTO WatchedSeries VALUES (17, 4, 2019, 10);
+INSERT INTO WatchedSeries VALUES (18, 5, 1001, 100);
+INSERT INTO WatchedSeries VALUES (19, 5, 1002, 100);
+INSERT INTO WatchedSeries VALUES (20, 6, 1001, 45);

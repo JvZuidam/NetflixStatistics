@@ -25,9 +25,11 @@ CREATE TABLE Profile (
 );
 CREATE TABLE Movie (
 	MovieId int NOT NULL PRIMARY KEY,
+	MovieTitle varchar(60) NOT NULL,
 	Genre varchar(20) NOT NULL,
 	Language varchar(2) NOT NULL,
 	PgRating varchar(3) NOT NULL,
+	Playtime varchar(4) NOT NULL
 );
 CREATE TABLE Series (
 	SeriesId int NOT NULL PRIMARY KEY,
@@ -41,7 +43,7 @@ CREATE TABLE Episode (
 	FollowNumber varchar(7) NOT NULL,
 	SeriesId int NOT NULL,
 	EpisodeTitle varchar(20) NOT NULL,
-	Playtime int NOT NULL,
+	Playtime varchar(4) NOT NULL,
 
 	CONSTRAINT EpisodeFK
 		FOREIGN KEY (SeriesId) 
@@ -51,9 +53,9 @@ CREATE TABLE Episode (
 CREATE TABLE WatchedSeries(
 	WatchedId int NOT NULL PRIMARY KEY,
 	ProfileId int NOT NULL,
-	SeriesId int NOT NULL,
+	EpisodeId int NOT NULL,
 	Percentage int NOT NULL,
-	FOREIGN KEY(SeriesId) REFERENCES Series(SeriesId),
+	FOREIGN KEY(EpisodeId) REFERENCES Episode(EpisodeId),
 
 	CONSTRAINT WatchedSeriesFK
 		FOREIGN KEY(ProfileId) 
