@@ -23,30 +23,6 @@ CREATE TABLE Profile (
 		REFERENCES Account(AccountId)
 			ON DELETE CASCADE
 );
-CREATE TABLE WatchedSeries(
-	WatchedId int NOT NULL PRIMARY KEY,
-	ProfileId int NOT NULL,
-	SeriesId int NOT NULL,
-	Percentage int NOT NULL,
-	FOREIGN KEY(SeriesId) REFERENCES Series(SeriesId),
-
-	CONSTRAINT WatchedSeriesFK
-		FOREIGN KEY(ProfileId) 
-		REFERENCES Profile(ProfileId)
-			ON DELETE CASCADE
-);
-CREATE TABLE WatchedMovies(
-	WatchedId int NOT NULL PRIMARY KEY,
-	ProfileId int NOT NULL,
-	MovieId int NOT NULL,
-	Percentage int NOT NULL,
-	FOREIGN KEY(MovieId) REFERENCES Movie(MovieId),
-
-	CONSTRAINT WatchedMoviesFK
-		FOREIGN KEY(ProfileId) 
-		REFERENCES Profile(ProfileId)
-			ON DELETE CASCADE
-);
 CREATE TABLE Movie (
 	MovieId int NOT NULL PRIMARY KEY,
 	Genre varchar(20) NOT NULL,
@@ -70,5 +46,29 @@ CREATE TABLE Episode (
 	CONSTRAINT EpisodeFK
 		FOREIGN KEY (SeriesId) 
 		REFERENCES Series(SeriesId)
+			ON DELETE CASCADE
+);
+CREATE TABLE WatchedSeries(
+	WatchedId int NOT NULL PRIMARY KEY,
+	ProfileId int NOT NULL,
+	SeriesId int NOT NULL,
+	Percentage int NOT NULL,
+	FOREIGN KEY(SeriesId) REFERENCES Series(SeriesId),
+
+	CONSTRAINT WatchedSeriesFK
+		FOREIGN KEY(ProfileId) 
+		REFERENCES Profile(ProfileId)
+			ON DELETE CASCADE
+);
+CREATE TABLE WatchedMovies(
+	WatchedId int NOT NULL PRIMARY KEY,
+	ProfileId int NOT NULL,
+	MovieId int NOT NULL,
+	Percentage int NOT NULL,
+	FOREIGN KEY(MovieId) REFERENCES Movie(MovieId),
+
+	CONSTRAINT WatchedMoviesFK
+		FOREIGN KEY(ProfileId) 
+		REFERENCES Profile(ProfileId)
 			ON DELETE CASCADE
 );
