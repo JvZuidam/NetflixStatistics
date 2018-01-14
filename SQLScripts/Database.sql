@@ -52,12 +52,6 @@ CREATE TABLE Movie (
 	Genre varchar(20) NOT NULL,
 	Language varchar(2) NOT NULL,
 	PgRating varchar(3) NOT NULL,
-	ProgramId int NOT NULL,
-
-	CONSTRAINT MovieFK
-		FOREIGN KEY (ProgramId) 
-		REFERENCES Program(ProgramId)
-			ON DELETE CASCADE
 );
 CREATE TABLE Series (
 	SeriesId int NOT NULL PRIMARY KEY,
@@ -65,12 +59,6 @@ CREATE TABLE Series (
 	Genre varchar(20) NOT NULL,
 	Language varchar(2) NOT NULL,
 	PgRating varchar(3) NOT NULL,
-	ProgramId int NOT NULL,
-
-	CONSTRAINT SeriesFK
-		FOREIGN KEY (ProgramId) 
-		REFERENCES Program(ProgramId)
-			ON DELETE CASCADE
 );
 CREATE TABLE Episode (
 	EpisodeId int NOT NULL PRIMARY KEY,
