@@ -23,18 +23,26 @@ CREATE TABLE Profile (
 		REFERENCES Account(AccountId)
 			ON DELETE CASCADE
 );
-CREATE TABLE Program (
-	ProgramId int NOT NULL PRIMARY KEY,
-	Title varchar(50) NOT NULL,
-);
-CREATE TABLE Watched(
+CREATE TABLE WatchedSeries(
 	WatchedId int NOT NULL PRIMARY KEY,
 	ProfileId int NOT NULL,
-	ProgramId int NOT NULL,
+	SeriesId int NOT NULL,
 	Percentage int NOT NULL,
-	FOREIGN KEY(ProgramId) REFERENCES Program(ProgramId),
+	FOREIGN KEY(SeriesId) REFERENCES Series(SeriesId),
 
-	CONSTRAINT WatchedFK
+	CONSTRAINT WatchedSeriesFK
+		FOREIGN KEY(ProfileId) 
+		REFERENCES Profile(ProfileId)
+			ON DELETE CASCADE
+);
+CREATE TABLE WatchedMovies(
+	WatchedId int NOT NULL PRIMARY KEY,
+	ProfileId int NOT NULL,
+	MovieId int NOT NULL,
+	Percentage int NOT NULL,
+	FOREIGN KEY(MovieId) REFERENCES Movie(MovieId),
+
+	CONSTRAINT WatchedMoviesFK
 		FOREIGN KEY(ProfileId) 
 		REFERENCES Profile(ProfileId)
 			ON DELETE CASCADE
@@ -65,7 +73,7 @@ CREATE TABLE Series (
 			ON DELETE CASCADE
 );
 CREATE TABLE Episode (
-	EpisodeId int NOT Null PRIMARY KEY,
+	EpisodeId int NOT NULL PRIMARY KEY,
 	FollowNumber varchar(7) NOT NULL,
 	SeriesId int NOT NULL,
 	EpisodeTitle varchar(20) NOT NULL,
@@ -76,20 +84,3 @@ CREATE TABLE Episode (
 		REFERENCES Series(SeriesId)
 			ON DELETE CASCADE
 );
-
-INSERT INTO Account VALUES (1215426, 'Fam. van Raalte', 'Schopenhauerdijkje', '3991ML', '5', 'Houten')
-INSERT INTO Profile VALUES (5, 'Frank', 18, 1215426)
-INSERT INTO Program VALUES (10, 'Breaking Bad')
-INSERT INTO Watched VALUES (1, 5, 10, 100)
-
-SELECT * FROM Account;
-SELECT * FROM Profile;
-SELECT * FROM Program;
-SELECT * FROM Watched;
-
-DELETE FROM Account;
-
-SELECT * FROM Account;
-SELECT * FROM Profile;
-SELECT * FROM Program;
-SELECT * FROM Watched;
