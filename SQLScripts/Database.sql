@@ -27,7 +27,7 @@ CREATE TABLE Movie (
 	MovieId int NOT NULL PRIMARY KEY,
 	MovieTitle varchar(60) NOT NULL,
 	Genre varchar(20) NOT NULL,
-	Language varchar(2) NOT NULL,
+	Language varchar(20) NOT NULL,
 	PgRating varchar(3) NOT NULL,
 	Playtime varchar(4) NOT NULL
 );
@@ -35,14 +35,14 @@ CREATE TABLE Series (
 	SeriesId int NOT NULL PRIMARY KEY,
 	SeriesTitle varchar(50) NOT NULL,
 	Genre varchar(20) NOT NULL,
-	Language varchar(2) NOT NULL,
+	Language varchar(20) NOT NULL,
 	PgRating varchar(3) NOT NULL,
 );
 CREATE TABLE Episode (
 	EpisodeId int NOT NULL PRIMARY KEY,
 	FollowNumber varchar(7) NOT NULL,
 	SeriesId int NOT NULL,
-	EpisodeTitle varchar(20) NOT NULL,
+	EpisodeTitle varchar(40) NOT NULL,
 	Playtime varchar(4) NOT NULL,
 
 	CONSTRAINT EpisodeFK
