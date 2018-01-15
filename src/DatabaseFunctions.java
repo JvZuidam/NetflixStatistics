@@ -1,18 +1,19 @@
 import java.sql.*;
 
 public class DatabaseFunctions {
+    //Global variables are initialised
     String connectionUrl = "jdbc:sqlserver://localhost\\SQLEXPRESS;databaseName=NetflixStatistixs;integratedSecurity=true;";
     private Connection con = null;
     private Statement stmt = null;
     private ResultSet rs = null;
 
-
-    public void getAccount() {
-        excecute("SELECT * FROM Account");
+    //Get's all data from the Account Table
+    public void getAccount(int id) {
+        excecute("SELECT * FROM Account WHERE AccountId = " + id);
         try {
             while (rs.next()) {
 
-                // Vraag per row de kolommen in die row op.
+                //Per row get the columns in that row.
                 int AccountId = rs.getInt("AccountId");
                 String AccountName = rs.getString("AccountName");
                 String Street = rs.getString("Street");
@@ -20,7 +21,7 @@ public class DatabaseFunctions {
                 String Adress = rs.getString("Adress");
                 String City = rs.getString("City");
 
-                // Print de kolomwaarden.
+                // Print Column data
                 System.out.println(AccountId + " " + AccountName + " " + Street + " " + Zipcode + " " + Adress + " " + City);
             }
 
@@ -30,7 +31,7 @@ public class DatabaseFunctions {
             closeConn();
         }
     }
-
+    //Get's all data from the Profile Table.
     public void getProfile() {
         excecute("SELECT * FROM Profile");
         try {
@@ -49,7 +50,7 @@ public class DatabaseFunctions {
             closeConn();
         }
     }
-
+    //Get's all data from the Movies Table.
     public void getMovie() {
         excecute("SELECT * FROM Movie");
         try {
@@ -71,7 +72,7 @@ public class DatabaseFunctions {
         }
 
     }
-
+    //Get's all data from the Series Table.
     public void getSeries() {
         excecute("SELECT * FROM Series");
         try {
@@ -92,7 +93,7 @@ public class DatabaseFunctions {
         }
 
     }
-
+    //Get's all data from the Episode Table.
     public void getEpisodes() {
         excecute("SELECT * FROM Episode");
         try {
@@ -115,7 +116,7 @@ public class DatabaseFunctions {
         }
 
     }
-
+    //Get's all data from the Watchedmovies Table
     public void getWatchedSeries() {
         excecute("SELECT * FROM WatchedMovies");
         try {
@@ -134,7 +135,7 @@ public class DatabaseFunctions {
             closeConn();
         }
     }
-
+    //Get's all data from the WatchedSeries Table
     public void getWatchedMovies() {
         excecute("SELECT * FROM WatchedSeries");
         try {
@@ -153,7 +154,32 @@ public class DatabaseFunctions {
             closeConn();
         }
     }
+    //Query to get the percentage of all series.
+    public void getSeriesPercentage() {
+        getPercentage("SELECT Percentage FROM WatchedSeries WHERE ProfileId = 1");
+    }
+    //Query to get the percentage of all movies.
+    public void getMoviesPercentage() {
+        getPercentage("SELECT Percentage FROM WatchedMovies WHERE ProfileId = 3");
+    }
+    //Get the percentage data from the given query.
+    public void getPercentage (String string) {
+        excecute(string);
+        try {
+            while (rs.next()) {
+                int Percentage = rs.getInt("Percentage");
 
+                System.out.println(Percentage);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConn();
+        }
+    }
+
+    //Establishes a connection with the database and executes the queries given in the parameter.
     public ResultSet excecute(String string){
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -172,6 +198,7 @@ public class DatabaseFunctions {
         }
         return rs;
     }
+    //Closes the connection with the database.
     public void closeConn() {
         if (rs != null) try { rs.close(); } catch(Exception e) {}
         if (stmt != null) try { stmt.close(); } catch(Exception e) {}
