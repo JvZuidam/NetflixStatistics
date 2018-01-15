@@ -11,6 +11,7 @@ public class DatabaseFunctions {
         excecute("SELECT * FROM Account");
         try {
             while (rs.next()) {
+
                 // Vraag per row de kolommen in die row op.
                 int AccountId = rs.getInt("AccountId");
                 String AccountName = rs.getString("AccountName");
@@ -20,13 +21,9 @@ public class DatabaseFunctions {
                 String City = rs.getString("City");
 
                 // Print de kolomwaarden.
-                // System.out.println(ISBN + " " + title + " " + author);
-
-                // Met 'format' kun je de string die je print het juiste formaat geven, als je dat wilt.
-                // %d = decimal, %s = string, %-32s = string, links uitgelijnd, 32 characters breed.
-                System.out.format("| %7d | %-32s | %-24s | \n", AccountId, AccountName, Street, Zipcode, Adress, City);
+                System.out.println(AccountId + " " + AccountName + " " + Street + " " + Zipcode + " " + Adress + " " + City);
             }
-            System.out.println(String.format("| %7s | %-32s | %-24s |\n", " ", " ", " ").replace(" ", "-"));
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -35,22 +32,126 @@ public class DatabaseFunctions {
     }
 
     public void getProfile() {
-        String SQL = "SELECT * FROM Profile;";
+        excecute("SELECT * FROM Profile");
+        try {
+            while (rs.next()) {
+                int ProfileId = rs.getInt("ProfileId");
+                String ProfileName = rs.getString("ProfileName");
+                int Age = rs.getInt("Age");
+                int AccountId = rs.getInt("AccountId");
+
+                System.out.println(ProfileId + " " + ProfileName + " " + Age + " " + AccountId);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConn();
+        }
     }
 
     public void getMovie() {
-        String SQL = "SELECT * FROM Movie WHERE MovieId = 1;";
+        excecute("SELECT * FROM Movie");
+        try {
+            while (rs.next()) {
+                int MovieId = rs.getInt("MovieId");
+                String MovieTitle = rs.getString("MovieTitle");
+                String Genre = rs.getString("Genre");
+                String Language = rs.getString("Language");
+                String PgRating = rs.getString("PgRating");
+                String Playtime = rs.getString("Playtime");
+
+                System.out.println(MovieId + " " + MovieTitle + " " + Genre + " " + Language + " " + PgRating + " " + Playtime);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConn();
+        }
 
     }
 
     public void getSeries() {
-        String SQL = "SELECT * FROM Series WHERE SeriesId = 1;";
+        excecute("SELECT * FROM Series");
+        try {
+            while (rs.next()) {
+                int SeriesId = rs.getInt("SeriesId");
+                String SeriesTitle = rs.getString("SeriesTitle");
+                String Genre = rs.getString("Genre");
+                String Language = rs.getString("Language");
+                String PgRating = rs.getString("PgRating");
+
+                System.out.println(SeriesId + " " + SeriesTitle + " " + Genre + " " + Language + " " + PgRating);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConn();
+        }
 
     }
 
     public void getEpisodes() {
-        String SQL = "SELECT * FROM Episode WHERE EpisodeId = 1;";
+        excecute("SELECT * FROM Episode");
+        try {
+            while (rs.next()) {
 
+                // Vraag per row de kolommen in die row op.
+                int EpisodeId = rs.getInt("EpisodeId");
+                String FollowNumber = rs.getString("FollowNumber");
+                int SeriesId = rs.getInt("SeriesId");
+                String EpisodeTitle = rs.getString("EpisodeTitle");
+                String Playtime = rs.getString("Playtime");
+
+                System.out.println(EpisodeId + " " + FollowNumber + " " + SeriesId + " " +  EpisodeTitle + " " + Playtime);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConn();
+        }
+
+    }
+
+    public void getWatchedSeries() {
+        excecute("SELECT * FROM WatchedMovies");
+        try {
+            while (rs.next()) {
+                int WatchedId = rs.getInt("WatchedId");
+                int ProfileId = rs.getInt("ProfileId");
+                int MovieId = rs.getInt("MovieId");
+                int Percentage = rs.getInt("Percentage");
+
+                System.out.println(WatchedId + " " + ProfileId + " " + MovieId + " " +  Percentage);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConn();
+        }
+    }
+
+    public void getWatchedMovies() {
+        excecute("SELECT * FROM WatchedSeries");
+        try {
+            while (rs.next()) {
+                int WatchedId = rs.getInt("WatchedId");
+                int ProfileId = rs.getInt("ProfileId");
+                int EpisodeId = rs.getInt("EpisodeId");
+                int Percentage = rs.getInt("Percentage");
+
+                System.out.println(WatchedId + " " + ProfileId + " " + EpisodeId + " " +  Percentage);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConn();
+        }
     }
 
     public ResultSet excecute(String string){

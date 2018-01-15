@@ -6,7 +6,7 @@ public class Main {
         GraphicalUserInterface ui = new GraphicalUserInterface();
         SwingUtilities.invokeLater(ui);
         DatabaseFunctions dbf = new DatabaseFunctions();
-        dbf.getAccount();
+        dbf.getWatchedSeries();
 
 
     }
